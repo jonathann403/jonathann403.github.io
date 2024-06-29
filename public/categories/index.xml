@@ -4,5 +4,13 @@
         <link>https://jonathann403.github.io/categories/</link>
         <description>Categories - Category - jonathan</description>
         <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>jonathan403@proton.me (Jonathan Levy)</managingEditor>
-            <webMaster>jonathan403@proton.me (Jonathan Levy)</webMaster><atom:link href="https://jonathann403.github.io/categories/" rel="self" type="application/rss+xml" /></channel>
+            <webMaster>jonathan403@proton.me (Jonathan Levy)</webMaster><lastBuildDate>Sat, 29 Jun 2024 16:54:32 &#43;0300</lastBuildDate><atom:link href="https://jonathann403.github.io/categories/" rel="self" type="application/rss+xml" /><item>
+    <title>Writeups</title>
+    <link>https://jonathann403.github.io/categories/writeups/</link>
+    <pubDate>Sat, 29 Jun 2024 16:54:32 &#43;0300</pubDate>
+    <author>Jonathan Levy</author>
+    <guid>https://jonathann403.github.io/categories/writeups/</guid>
+    <description><![CDATA[]]></description>
+</item>
+</channel>
 </rss>
