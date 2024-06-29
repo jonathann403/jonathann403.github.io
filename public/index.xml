@@ -1,0 +1,10 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>jonathan</title>
+        <link>https://jonathann403.github.io/</link>
+        <description>This is my cool site</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>jonathan403@proton.me (Jonathan Levy)</managingEditor>
+            <webMaster>jonathan403@proton.me (Jonathan Levy)</webMaster>
+            <atom:link href="https://jonathann403.github.io/index.xml" rel="self" type="application/rss+xml" />
+        </channel>
+</rss>
