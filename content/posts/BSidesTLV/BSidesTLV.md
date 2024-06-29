@@ -26,7 +26,7 @@ I am Jonathan Levy (joe/jonathan403) and I did these challenges with my friend a
 
 ## "Echoes In The Dark" (450 Pts)
 
-This challenge was outstanding! The creator successfully implemented a vulnerability that he discover in the wild! and did an excellent job. Great challenge, thank you Rotem Reis!
+This challenge was outstanding! The creator successfully implemented a vulnerability that he discover in the wild! and did an excellent job. Great challenge, thank you author Rotem Reiss & Shaked Klein Orbach who co-authored this challenge!
 
 
 ![image](https://github.com/jonathann403/jonathann403.github.io/blob/main/public/posts/BSidesTLV/Pasted%20image%2020240629123402.png?raw=true?raw=true)
