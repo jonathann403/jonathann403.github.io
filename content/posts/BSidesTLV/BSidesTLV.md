@@ -11,8 +11,6 @@ tags:
   - xss
   - ssrf
   - domclobber
-categories:
-  - writeups
 lightgallery: true
 toc:
   enable: true

@@ -12,6 +12,7 @@ languageName = "English"
   email = "jonathan403@proton.me"
   link = "https://github.com/jonathann403"
 
+
 # Menu config
 [menu]
   [[menu.main]]
@@ -35,12 +36,12 @@ languageName = "English"
     title = ""
   [[menu.main]]
     weight = 3
-    identifier = "about"
+    identifier = "categories"
     pre = ""
     post = ""
-    name = "About"
-    url = "/about/"
-    title = "About Me"
+    name = "Categories"
+    url = "/categories/"
+    title = ""
 
 # Markup related configuration in Hugo
 [markup]
@@ -85,6 +86,7 @@ languageName = "English"
   Linkedin = "jonathan-levy-12867b1b6/"
   Twitter = "jonathan404_"
   Email = "jonathan403@proton.me"
+
 
 # Header config
 [params.header]
