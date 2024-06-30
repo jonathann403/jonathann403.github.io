@@ -39,7 +39,7 @@ languageName = "English"
     identifier = "about"
     pre = ""
     post = ""
-    name = "About Me"
+    name = "About"
     url = "/about/"
     title = ""
 
