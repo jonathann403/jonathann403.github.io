@@ -1,4 +1,5 @@
 ---
+weight: 3
 title: "About Me"
 date: 2024-06-30T12:00:00Z
 draft: false
