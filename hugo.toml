@@ -1,6 +1,6 @@
 baseURL = 'https://jonathann403.github.io/'
 languageCode = 'en-us'
-title = 'jonathan'
+title = 'Jonathan Levy's blog'
 theme = "LoveIt"
 
 # language name ["English", "简体中文", "Français", "Polski", ...]
@@ -65,6 +65,7 @@ languageName = "English"
     title = "Jonathan Levy"
     # subtitle shown in home page (HTML format is supported)
     subtitle = "some writeups and shi"
+    description = "My personal portfolio, showcasing me and my achievements in cybersecurity, as well as a blog where I share CTF write-ups, penetration testing insights, and other security-related content. 🚀 "
     # whether to use typeit animation for subtitle
     typeit = true
     # whether to show social links
