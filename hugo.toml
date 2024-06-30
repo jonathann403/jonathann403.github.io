@@ -1,6 +1,6 @@
 baseURL = 'https://jonathann403.github.io/'
 languageCode = 'en-us'
-title = 'Jonathan Levy's blog'
+title = Jonathan Levy's blog"
 theme = "LoveIt"
 
 # language name ["English", "简体中文", "Français", "Polski", ...]
