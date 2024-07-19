@@ -64,7 +64,7 @@ languageName = "English"
     # LoveIt CHANGED | 0.2.7 title shown in home page (HTML format is supported)
     title = "Jonathan Levy"
     # subtitle shown in home page (HTML format is supported)
-    subtitle = "some writeups and shi"
+    subtitle = "some writeups and sh1t... check out my About page"
     description = "My personal portfolio, showcasing me and my achievements in cybersecurity, as well as a blog where I share CTF write-ups, penetration testing insights, and other security-related content. 🚀 "
     # whether to use typeit animation for subtitle
     typeit = true
