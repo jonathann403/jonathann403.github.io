@@ -16,7 +16,7 @@ math:
 
 ## I've Found Vulnerabilities at:
 
-- 32th place on the Israel National Cyber Directorate VDP
+- 32nd place on the Israel National Cyber Directorate VDP
 - 1st place at NBA VDP on HackerOne.
 - One-Click Full Account Takeover at `fiverr.com`
 - One-Click Full Account Takeover at `motorola.com`
