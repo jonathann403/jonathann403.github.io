@@ -11,11 +11,12 @@ math:
 ## Whoami
 
 - I'm Jonathan Levy, a 16-year-old security researcher and web penetration tester. 
-- I currently hold the 46th place on the Israel National Cyber Directorate VDP chart.
+- I currently hold the 32th place on the Israel National Cyber Directorate VDP chart.
 - I am an active player in Capture The Flag (CTF) competitions as a member of the "Flag Fortress 2" team.
 
 ## I've Found Vulnerabilities at:
 
+- 32th place on the Israel National Cyber Directorate VDP
 - 1st place at NBA VDP on HackerOne.
 - One-Click Full Account Takeover at `fiverr.com`
 - One-Click Full Account Takeover at `motorola.com`
