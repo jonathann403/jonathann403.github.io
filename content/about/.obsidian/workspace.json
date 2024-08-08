@@ -1,14 +1,14 @@
 {
   "main": {
-    "id": "326700c802f58291",
+    "id": "6b8f1b4f3feb343f",
     "type": "split",
     "children": [
       {
-        "id": "7cec5c7aefb3bdc2",
+        "id": "1fcf5148b6e09fd9",
         "type": "tabs",
         "children": [
           {
-            "id": "064e339348b7bdc8",
+            "id": "ebf6e31f39f02d69",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -25,15 +25,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "f6e7d7151f810eef",
+    "id": "237a72e24a6f98f2",
     "type": "split",
     "children": [
       {
-        "id": "015ee6cb5c925a97",
+        "id": "29a374c285e8f83b",
         "type": "tabs",
         "children": [
           {
-            "id": "72040e682f59917a",
+            "id": "10a98eff036b689e",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -43,7 +43,7 @@
             }
           },
           {
-            "id": "8720e9615013f7e8",
+            "id": "7784d030be281d2e",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -58,7 +58,7 @@
             }
           },
           {
-            "id": "f405bccbbc72e20d",
+            "id": "02c910acd313a120",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -72,15 +72,15 @@
     "width": 300
   },
   "right": {
-    "id": "de445a1f41da4d15",
+    "id": "3d127d9765508d7b",
     "type": "split",
     "children": [
       {
-        "id": "7b201e7b1f152a41",
+        "id": "60893beb9cd431c3",
         "type": "tabs",
         "children": [
           {
-            "id": "91cf2a487d717f25",
+            "id": "43a188bd798749a7",
             "type": "leaf",
             "state": {
               "type": "backlink",
@@ -97,7 +97,7 @@
             }
           },
           {
-            "id": "ee68a1e645b2e8a3",
+            "id": "40d672cbd374fb4a",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
@@ -109,7 +109,7 @@
             }
           },
           {
-            "id": "86cf5c2f16f7c047",
+            "id": "ab25c274b2a5b127",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -120,7 +120,7 @@
             }
           },
           {
-            "id": "a906223af00f3fbe",
+            "id": "d60498c402d29dec",
             "type": "leaf",
             "state": {
               "type": "outline",
@@ -146,9 +146,6 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "064e339348b7bdc8",
-  "lastOpenFiles": [
-    "BSidesTLV.md",
-    "index.md"
-  ]
+  "active": "10a98eff036b689e",
+  "lastOpenFiles": []
 }

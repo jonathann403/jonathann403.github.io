@@ -16,8 +16,9 @@ math:
 
 ## I've Found Vulnerabilities at:
 
-- Full One-Click Account Takeover at `fiverr.com`
-- Full One-Click Account Takeover at `motorola.com`
+- 1st place at NBA VDP on HackerOne.
+- One-Click Full Account Takeover at `fiverr.com`
+- One-Click Full Account Takeover at `motorola.com`
 - A lot of undisclosed ones.
 ## Contact
 
