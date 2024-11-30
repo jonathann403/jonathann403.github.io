@@ -22,25 +22,25 @@ While searching for a CTF to participate in this weekend with my team (FF2), I s
 
 ## "Treasure Hunt" (116 pts, 71 solves)
 
-![[Pasted image 20241130131728.png]]
+![image](https://github.com/jonathann403/jonathann403.github.io/blob/main/content/posts/alpacahack-round-7/Pasted%20image%2020241130131728.png?raw=true)
 
 Inside the challenge's files we have the server code files along with some random files containing emojis
-![[Pasted image 20241130132056.png]]
+![image](https://github.com/jonathann403/jonathann403.github.io/blob/main/content/posts/alpacahack-round-7/Pasted%20image%2020241130131955.png?raw=true)
 
 in the `Dockerfile`, we can see this weird flag storing method:
-![[Pasted image 20241130132149.png]]
+![image](https://github.com/jonathann403/jonathann403.github.io/blob/main/content/posts/alpacahack-round-7/Pasted%20image%2020241130132149.png?raw=true)
 
-![[Pasted image 20241130132640.png]]
+![image](https://github.com/jonathann403/jonathann403.github.io/blob/main/content/posts/alpacahack-round-7/Pasted%20image%2020241130132640.png?raw=true)
 after pasting it to terminal, we can see that flag's path is `./public/3/8/7/6/9/1/7/c/b/d/1/b/3/d/b/1/2/e/3/9/5/8/7/c/6/6/a/c/2/8/9/1/f/l/a/g/./t/x/t`  (a-f, 1-9)
 while `public` means that we can GET to this file.
 
 In `index.js` , at `GET /` the server returns this html that contains the files under the `./public` directory.
 
-![[Pasted image 20241130133026.png]]
+![image](https://github.com/jonathann403/jonathann403.github.io/blob/main/content/posts/alpacahack-round-7/Pasted%20image%2020241130133026.png?raw=true)
 The server also returns `400` if the url contains `f,l,a,g` .
 I've managed to bypass this check by passing the letters as url encoded:
-![[Pasted image 20241130133401.png]]
-![[Pasted image 20241130133527.png]]
+![image](https://github.com/jonathann403/jonathann403.github.io/blob/main/content/posts/alpacahack-round-7/Pasted%20image%2020241130133401.png?raw=true)
+![image](https://github.com/jonathann403/jonathann403.github.io/blob/main/content/posts/alpacahack-round-7/Pasted%20image%2020241130133527.png?raw=true)
 
 now we need to get into the flag's directory and get the flag.
 To do that, I need a way to find if any directory exist on the server, and I can do that by sending a request to the a directory (without `/`), for example: `GET /hello`,
@@ -71,29 +71,29 @@ with httpx.Client(base_url=url) as client:
 ```
 
 I've tried to make it with `requests` but it keeps redirecting me so I had to do it with httpx...
-![[Pasted image 20241130135946.png]]
+![image](https://github.com/jonathann403/jonathann403.github.io/blob/main/content/posts/alpacahack-round-7/Pasted%20image%2020241130135946.png?raw=true)
 
 ## "Alpaca Poll" (146 pts, 42 solves)
 
-![[Pasted image 20241130140118.png]]
+![image](https://github.com/jonathann403/jonathann403.github.io/blob/main/content/posts/alpacahack-round-7/Pasted%20image%2020241130140118.png?raw=true)
 
-![[Pasted image 20241130140230.png]]
+![image](https://github.com/jonathann403/jonathann403.github.io/blob/main/content/posts/alpacahack-round-7/Pasted%20image%2020241130140230.png?raw=true)
 
 This challenge suppose to be a poll site... let's look at the source code:
-![[Pasted image 20241130140349.png]]
+![image](https://github.com/jonathann403/jonathann403.github.io/blob/main/content/posts/alpacahack-round-7/Pasted%20image%2020241130140349.png?raw=true)
 
 we can see that this one uses `redis`, let's see how he manages to speak with the server.
 
 
-![[Pasted image 20241130140529.png]]
-![[Pasted image 20241130140630.png]]
+![image](https://github.com/jonathann403/jonathann403.github.io/blob/main/content/posts/alpacahack-round-7/Pasted%20image%2020241130140529.png?raw=true)
+![image](https://github.com/jonathann403/jonathann403.github.io/blob/main/content/posts/alpacahack-round-7/Pasted%20image%2020241130140630.png?raw=true)
 
 by taking a look on these functions (and comments lol), we can understand that we have to find an injection in here.
-![[Pasted image 20241130141024.png]]
+![image](https://github.com/jonathann403/jonathann403.github.io/blob/main/content/posts/alpacahack-round-7/Pasted%20image%2020241130141024.png?raw=true)
 also, in the init function, we can see that the flag is in a `redis key` named `flag`.
 
 I'll deploy this challenge locally because of this function that prints the input/output of the redis:
-![[Pasted image 20241130140921.png]]
+![image](https://github.com/jonathann403/jonathann403.github.io/blob/main/content/posts/alpacahack-round-7/Pasted%20image%2020241130140921.png?raw=true)
 
 Let's now focus on the `POST /vote`:
 
@@ -117,12 +117,12 @@ and after url encoding:
 `animal=%0D%0Adog%0D%0AGET%20flag`
 
 in the server, it looks like that (redis command injected successfully):
-![[Pasted image 20241130141921.png]]
+![image](https://github.com/jonathann403/jonathann403.github.io/blob/main/content/posts/alpacahack-round-7/Pasted%20image%2020241130141921.png?raw=true)
 
 Now we need to of a creative way to make the client see the value of the flag!
 
-![[Pasted image 20241130142329.png]]
-![[Pasted image 20241130142339.png]]
+![image](https://github.com/jonathann403/jonathann403.github.io/blob/main/content/posts/alpacahack-round-7/Pasted%20image%2020241130142329.png?raw=true)
+![image](https://github.com/jonathann403/jonathann403.github.io/blob/main/content/posts/alpacahack-round-7/Pasted%20image%2020241130142339.png?raw=true)
 as you can see, every value that is being returned, is getting inside the `parseInt()` function.
 that means we can't return a string of the flag, BUT, we CAN return the ascii value of each letter in the flag, and get it inside a string key like dog, and send a request to `\getVotes` to get a dictionary of the results!
 
@@ -168,6 +168,6 @@ Now, instead of localhost, let's put our instance:
 vote_url = "http://34.170.146.252:32483/vote"
 get_votes_url = "http://34.170.146.252:32483/votes"
 ```
-![[Pasted image 20241130145312.png]]
+![image](https://github.com/jonathann403/jonathann403.github.io/blob/main/content/posts/alpacahack-round-7/Pasted%20image%2020241130145312.png?raw=true)
 
 YAY!

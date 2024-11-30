@@ -52,7 +52,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "\"![[Pasted image 20241130132056.png\"",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -164,6 +164,10 @@
   },
   "active": "2b17c4f5aeec830f",
   "lastOpenFiles": [
+    "Pasted.md",
+    "index.md",
+    "Untitled.canvas",
+    "2024-11-30.md",
     "Pasted image 20241130145312.png",
     "Pasted image 20241130142339.png",
     "Pasted image 20241130142329.png",
@@ -173,7 +177,6 @@
     "Pasted image 20241130140630.png",
     "Pasted image 20241130140529.png",
     "Pasted image 20241130140349.png",
-    "Pasted image 20241130140230.png",
-    "Pasted image 20241130140118.png"
+    "Pasted image 20241130140230.png"
   ]
 }
