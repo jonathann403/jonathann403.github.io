@@ -1,6 +1,6 @@
 ---
 weight: 1
-title: AlpacaHack CTF 2025 Web Writeups
+title: AlpacaHack CTF 2024 Web Writeups
 date: 2024-11-30T13:32:12+03:00
 draft: false
 author: Jonathan Levy
