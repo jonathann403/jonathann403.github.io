@@ -55,7 +55,7 @@ if __name__ == '__main__':
     server.serve_forever()
 ```
 
-`~$ ngrok http 8888`
+`~$ ngrok http 8000`
 
 I submitted the ngrok URL to the CTF challenge, and the backend followed the redirect to the internal admin page, which gave me access to the flag:
 
@@ -197,30 +197,6 @@ print("\n[+] Forged Admin JWT:\n")
 print(token)
 
 ```
-
-### Decrypting the Admin-Only TODO List
-
-After logging in, an encrypted message appeared. The `robots.txt` revealed an XOR-based `encrypt()` function, so I reversed it:
-
-after decrypt it, by reversing the encrypt func from robots.txt:
-
-```python
-def decrypt(encrypted_list):
-    return ''.join([chr(x ^ 42) for x in encrypted_list])
-
-blocks = [
-    [108, 67, 82, 10, 77, 70, 67, 94, 73, 66, 79, 89],
-    [107, 78, 92, 79, 88, 94, 67, 89, 79, 10, 73, 69, 71, 90, 75, 68, 83],
-    [105, 88, 79, 75, 94, 79, 10, 8, 72, 95, 89, 67, 68, 79, 89, 89, 117, 89, 79, 73, 88, 79, 94, 89, 8, 10, 90, 75, 77, 79, 10, 7, 7, 10, 71, 75, 78, 79, 10, 67, 94, 10, 72, 95, 94, 10, 68, 69, 10, 72, 95, 94, 94, 69, 68, 10, 94, 69, 10, 75, 73, 73, 79, 89, 89, 10, 83, 79, 94],
-    [126, 75, 65, 79, 10, 69, 92, 79, 88, 10, 94, 66, 79, 10, 93, 69, 88, 70, 78, 10, 7, 7, 10, 75, 70, 71, 69, 89, 94, 10, 78, 69, 68, 79]
-]
-
-for i, block in enumerate(blocks):
-    decrypted = decrypt(block)
-    print(f"[+] Block {i+1} Decrypted:\n{decrypted}\n")
-
-```
-
 
 ### Decrypting the Admin-Only TODO List
 
