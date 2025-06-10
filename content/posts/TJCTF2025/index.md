@@ -59,7 +59,8 @@ if __name__ == '__main__':
 
 I submitted the ngrok URL to the CTF challenge, and the backend followed the redirect to the internal admin page, which gave me access to the flag:
 
-![[Pasted image 20250608190121.png]]
+
+![](https://github.com/jonathann403/jonathann403.github.io/blob/main/content/posts/TJCTF2025/Pasted%20image%2020250608190121.png?raw=true)
 
 ## Challenge: `web/TeXploit` – 303 Solves
 
@@ -84,7 +85,7 @@ LaTeX provides built-in commands for file I/O, including reading files using `\o
 ```
 
 Once submitted, the compiled PDF displayed the flag in plain text.
-![[Pasted image 20250608190809.png]]
+![](https://github.com/jonathann403/jonathann403.github.io/blob/main/content/posts/TJCTF2025/Pasted%20image%2020250608190809.png?raw=true)
 
 ## Challenge: `web/front-door` – 165 Solves
 
@@ -248,19 +249,19 @@ Decrypted messages revealed a hidden path:  `/business_secrets`.
 
 Navigated to `/business_secrets` and successfully retrieved the final flag:
 
-![[Pasted image 20250608195235.png]]
+![](https://github.com/jonathann403/jonathann403.github.io/blob/main/content/posts/TJCTF2025/Pasted%20image%2020250608195235.png?raw=true)
 ## Challenge: `web/hidden-canvas` - 140 solves
 
 I can upload images, and the site displays the metadata of it, the site is in python:
-![[Pasted image 20250608213632.png]]
+![](https://github.com/jonathann403/jonathann403.github.io/blob/main/content/posts/TJCTF2025/Pasted%20image%2020250608213632.png?raw=true)
 so Let's see if SSTI is possible:
-![[Pasted image 20250608213622.png]]
+![](https://github.com/jonathann403/jonathann403.github.io/blob/main/content/posts/TJCTF2025/Pasted%20image%2020250608213622.png?raw=true)
 
-![[Pasted image 20250608213737.png]]
+![](https://github.com/jonathann403/jonathann403.github.io/blob/main/content/posts/TJCTF2025/Pasted%20image%2020250608213737.png?raw=true)
 
 let's try to put a valid base64:
-![[Pasted image 20250608213819.png]]
-![[Pasted image 20250608213852.png]]
+![](https://github.com/jonathann403/jonathann403.github.io/blob/main/content/posts/TJCTF2025/Pasted%20image%2020250608213819.png?raw=true)
+![](https://github.com/jonathann403/jonathann403.github.io/blob/main/content/posts/TJCTF2025/Pasted%20image%2020250608213852.png?raw=true)
 
 ## Challenge: `web/double-nested` - 31 solves
 
@@ -291,7 +292,7 @@ This regex removes up to 3 `key=value` pairs from the input, meaning we can bypa
 
 **Additional filters:**  
 
-![[Pasted image 20250609103833.png]]
+![](https://github.com/jonathann403/jonathann403.github.io/blob/main/content/posts/TJCTF2025/Pasted%20image%2020250609103833.png?raw=true)
 
 ### Content Security Policy (CSP)
 
@@ -300,7 +301,7 @@ So even if we bypassed input filters, `<script>alert(1)</script>` would not run.
 
 There's an endpoint that generates javascript:
 
-![[Pasted image 20250609104503.png]]
+![](https://github.com/jonathann403/jonathann403.github.io/blob/main/content/posts/TJCTF2025/Pasted%20image%2020250609104503.png?raw=true)
 ### Payload Strategy – iframe + Base64 + External JS
 
 The breakthrough came from realizing we could inject an iframe with a `data:` URL and base64-encoded content:
@@ -350,7 +351,7 @@ And inject it via:
 **Flag successfully retrieved via webhook**
 
 
-![[Pasted image 20250609175734.png]]
+![](https://github.com/jonathann403/jonathann403.github.io/blob/main/content/posts/TJCTF2025/Pasted%20image%2020250609175734.png?raw=true)
 
 ## Challenge: `web/chill-site` – 27 Solves
 
@@ -451,20 +452,20 @@ Cracked Password: `allsgud`
 
 Logged in successfully!
 
-![[Pasted image 20250610200141.png]]
-![[Pasted image 20250610200152.png]]
+![](https://github.com/jonathann403/jonathann403.github.io/blob/main/content/posts/TJCTF2025/Pasted%20image%2020250610200141.png?raw=true)
+![](https://github.com/jonathann403/jonathann403.github.io/blob/main/content/posts/TJCTF2025/Pasted%20image%2020250610200152.png?raw=true)
 
 ## Challenge: `web/markdown-renderer` – 22 Solves
 
 ### Challenge Overview
 
 A markdown rendering application accepts user input and displays it on the page. Sanitization is handled using **DOMPurify**, which prevents direct JavaScript injection.
-![[Pasted image 20250610200300.png]]
+![](https://github.com/jonathann403/jonathann403.github.io/blob/main/content/posts/TJCTF2025/Pasted%20image%2020250610200300.png?raw=true)
 
 However, the **admin bot** is known to **click a specific `<a>` element inside an `<li>` that belongs to a `<ul id="markdownList">`** — which we can leverage for a click-based XSS vector.
-![[Pasted image 20250610200428.png]]
+![](https://github.com/jonathann403/jonathann403.github.io/blob/main/content/posts/TJCTF2025/Pasted%20image%2020250610200428.png?raw=true)
 Also, there’s a reflected XSS in `/register?redirect=`:
-![[Pasted image 20250610202207.png]]
+![](https://github.com/jonathann403/jonathann403.github.io/blob/main/content/posts/TJCTF2025/Pasted%20image%2020250610202207.png?raw=true)
 
 ### Sanitizer Behavior
 
@@ -519,7 +520,7 @@ Where the ID is stored in **`localStorage.markdowns`** on the admin's browser.
 3. Sends the result as a JSON blob to your **webhook.site** URL.
 
 Once sent to the admin bot, the flag is successfully retrieved:
-![[Pasted image 20250610203711.png]]
+![](https://github.com/jonathann403/jonathann403.github.io/blob/main/content/posts/TJCTF2025/Pasted%20image%2020250610203711.png?raw=true)
 
 ## Conclusion
 
